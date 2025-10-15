@@ -181,11 +181,6 @@ docker run -it --rm -v ${PWD}:/app ml-fat bash
 
 MIT License - дивіться LICENSE файл для деталей.
 
-## 👥 Автори
-
-- **MLOps Course** - основний розробник
-- **Docker Optimization** - multi-stage builds
-
 ---
 
 **🎉 Готово до використання!** Запускайте inference на власних зображеннях та експериментуйте з оптимізацією Docker образів.
