@@ -1,0 +1,23 @@
+# Slim Dockerfile — multi-stage
+
+# Stage 1: Install dependencies
+FROM python:3.9-slim AS builder
+
+WORKDIR /app
+
+RUN pip install --upgrade pip
+RUN pip install torch torchvision pillow
+
+# Stage 2: Copy only what is needed for inference
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Копіюємо лише необхідне з попереднього шару
+COPY --from=builder /usr/local /usr/local
+
+# Копіюємо скрипти та модель
+COPY model.pt .
+COPY inference.py .
+
+ENTRYPOINT ["python", "inference.py"]
