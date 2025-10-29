@@ -1,0 +1,28 @@
+# === Terraform files to ignore ===
+
+# Local .terraform directories (auto-downloaded modules/providers)
+**/.terraform/
+
+# Terraform lock files (optional: keep if working in teams with version pinning)
+**/.terraform.lock.hcl
+
+# State files (optional: include if using remote backend)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Terraform plan output
+*.tfplan
+
+# Sensitive override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Editor-specific files (optional)
+.vscode/
+.idea/
+*.swp
