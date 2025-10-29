@@ -34,3 +34,14 @@ variable "availability_zones" {
   default     = ["eu-central-1a", "eu-central-1b"]
 }
 
+variable "enable_nat_gateway" {
+  description = "Create NAT Gateway(s) for private subnets"
+  type        = bool
+  default     = true
+}
+
+variable "single_nat_gateway" {
+  description = "Use a single NAT Gateway across all AZs"
+  type        = bool
+  default     = true
+}

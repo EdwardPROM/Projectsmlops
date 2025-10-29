@@ -3,9 +3,10 @@ terraform {
   # Example:
   # terraform init \
   #   -backend-config="bucket=<your-bucket>" \
-  #   -backend-config="key=eks/terraform.tfstate" \
+  #   -backend-config="key=env/dev/terraform.tfstate" \
   #   -backend-config="region=<aws-region>" \
   #   -backend-config="dynamodb_table=<lock-table>" \
   #   -backend-config="encrypt=true"
   backend "s3" {}
 }
+

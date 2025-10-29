@@ -1,9 +1,12 @@
 terraform {
-  backend "s3" {
-    bucket         = "tfstate-edward-mlops"       # <-- ОНОВЛЕНА НАЗВА
-    key            = "vpc/terraform.tfstate"
-    region         = "eu-central-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
+  # Configure remote state backend via CLI flags at init time.
+  # Example:
+  # terraform init \
+  #   -backend-config="bucket=<your-bucket>" \
+  #   -backend-config="key=vpc/terraform.tfstate" \
+  #   -backend-config="region=<aws-region>" \
+  #   -backend-config="dynamodb_table=<lock-table>" \
+  #   -backend-config="encrypt=true"
+  backend "s3" {}
 }
+

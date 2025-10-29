@@ -4,6 +4,48 @@ variable "region" {
   default     = "eu-central-1"
 }
 
+variable "vpc_name" {
+  description = "Name of the VPC"
+  type        = string
+  default     = "mlops-vpc"
+}
+
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "public_subnet_cidrs" {
+  description = "List of CIDR blocks for public subnets"
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+}
+
+variable "private_subnet_cidrs" {
+  description = "List of CIDR blocks for private subnets"
+  type        = list(string)
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
+}
+
+variable "availability_zones" {
+  description = "List of availability zones"
+  type        = list(string)
+  default     = ["eu-central-1a", "eu-central-1b"]
+}
+
+variable "enable_nat_gateway" {
+  description = "Create NAT Gateway(s) for private subnets"
+  type        = bool
+  default     = true
+}
+
+variable "single_nat_gateway" {
+  description = "Use a single NAT Gateway across all AZs"
+  type        = bool
+  default     = true
+}
+
 variable "cluster_name" {
   description = "EKS cluster name"
   type        = string
@@ -16,47 +58,8 @@ variable "cluster_version" {
   default     = "1.29"
 }
 
-# Optional direct wiring from a parent/root to avoid remote state
-variable "vpc_id" {
-  description = "Override VPC ID (bypass terraform_remote_state)"
-  type        = string
-  default     = null
-}
-
-variable "private_subnet_ids" {
-  description = "Override private subnet IDs (bypass terraform_remote_state)"
-  type        = list(string)
-  default     = null
-}
-
-# Remote state (VPC) — used when overrides above are not provided
-variable "vpc_state_bucket" {
-  description = "S3 bucket name containing VPC remote state"
-  type        = string
-  default     = null
-}
-
-variable "vpc_state_key" {
-  description = "S3 object key for VPC remote state"
-  type        = string
-  default     = null
-}
-
-variable "vpc_state_region" {
-  description = "AWS region for the VPC state bucket"
-  type        = string
-  default     = null
-}
-
-variable "vpc_state_profile" {
-  description = "AWS profile to read VPC remote state (optional)"
-  type        = string
-  default     = null
-}
-
-# Node group settings
 variable "enable_gpu" {
-  description = "Create GPU managed node group"
+  description = "Create GPU node group"
   type        = bool
   default     = true
 }
